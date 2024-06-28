@@ -1,17 +1,23 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const PORT = process.env.PORT  || 4000
+const mongoose = require('mongoose');
 
 // Load environment variables from .env file
 dotenv.config();
+
+const PORT = process.env.PORT || 4000;
+const mongoDBURL = process.env.MONGODB_URL;
+
+mongoose.connect(mongoDBURL)
+  .then(() => console.log('Connected to MongoDB'))
+  .catch((err) => console.error('Failed to connect to MongoDB', err));
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-require('./db/connection');
 const User = require('./Models/User');
 
 app.post("/", async (req, res) => {
