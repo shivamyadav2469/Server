@@ -7,11 +7,9 @@ const mongoose = require('mongoose');
 dotenv.config();
 
 const PORT = process.env.PORT || 4000;
-const mongoDBURL = process.env.MONGODB_URL;
 
-mongoose.connect(mongoDBURL)
-  .then(() => console.log('Connected to MongoDB'))
-  .catch((err) => console.error('Failed to connect to MongoDB', err));
+// Connect to MongoDB
+require('./connection');
 
 const app = express();
 
