@@ -9,7 +9,7 @@ dotenv.config();
 const PORT = process.env.PORT || 4000;
 
 // Connect to MongoDB
-require('./connection');
+require('./db/connection');
 
 const app = express();
 
